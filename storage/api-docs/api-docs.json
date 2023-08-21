@@ -1,0 +1,396 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Back Page Documentation",
+        "description": "Back Page API Documentation",
+        "contact": {
+            "email": "admin@admin.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000"
+        }
+    ],
+    "paths": {
+        "/api/v1/auth/signup": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Manually sign up a new user",
+                "operationId": "ca7254e244fd3361f80f09ef775b20a9",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SignupRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SignUpResource"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Manually sign in a new user",
+                "operationId": "7ff8967bf7f2cd14baa6f33b7192a086",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SignInRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SignUpResource"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/logout": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Logout User",
+                "operationId": "8f27d1577f8f80040257c4ea15588c7d",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User logout successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/auth/password/email": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "forget password",
+                "operationId": "0744258dd1fdf32b0e262d0fd3a53aa3",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ForgetPasswordRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Password reset email sent"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ForgetPasswordRequest": {
+                "title": "Forget Password Request",
+                "description": "Forget Password Request and a email link generate for password change",
+                "required": [
+                    "email"
+                ],
+                "properties": {
+                    "email": {
+                        "title": "email",
+                        "description": "Email of member",
+                        "type": "string",
+                        "format": "email",
+                        "example": "member@gmail.com"
+                    }
+                },
+                "type": "object"
+            },
+            "SignInRequest": {
+                "title": "SignIn Authentication Request",
+                "description": "SignIn request body data",
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "email": {
+                        "title": "email",
+                        "description": "Email of member",
+                        "type": "string",
+                        "format": "email",
+                        "example": "member@gmail.com"
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "password of member",
+                        "type": "string",
+                        "format": "password",
+                        "minLength": 6,
+                        "example": "member123"
+                    }
+                },
+                "type": "object"
+            },
+            "SignupRequest": {
+                "title": "SignUp Authentication Request",
+                "description": "SignUp request body data",
+                "required": [
+                    "name",
+                    "email",
+                    "password",
+                    "password_confirmation"
+                ],
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "Name of member",
+                        "type": "string",
+                        "example": "jon"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "Email of member",
+                        "type": "string",
+                        "format": "email",
+                        "example": "member@gmail.com"
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "password of member",
+                        "type": "string",
+                        "format": "password",
+                        "minLength": 6,
+                        "example": "member123"
+                    },
+                    "password_confirmation": {
+                        "title": "password confirmation",
+                        "description": "confirm password of member",
+                        "type": "string",
+                        "format": "password",
+                        "minLength": 6,
+                        "example": "member123"
+                    }
+                },
+                "type": "object"
+            },
+            "SignUpResource": {
+                "title": "SignUp",
+                "description": "SignUp response data",
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "Name of member",
+                        "type": "string",
+                        "example": "jon"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "Email of member",
+                        "type": "string",
+                        "example": "member@gmail.com"
+                    },
+                    "token": {
+                        "title": "token",
+                        "description": "auth token",
+                        "type": "string",
+                        "example": "1|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxK"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
